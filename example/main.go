@@ -30,23 +30,23 @@ func main() {
 	fmt.Println("\n\nCalculate derivate:")
 
 	x := NewDual(1.5, 1)
-	y := sampleFunction(x) // f expected 2.17, -2.05 at 1.5
+	y := simpleFunction(x)
 
 	fmt.Println("f(x) = x * sin(x*x) + 1")
 	fmt.Printf("f(1.5) = %.2f, f'(1.5) = %.2f\n", GetVal(y), GetDeriv(y))
 
-	sigma := sigmoid(x) // sigma expected 0.82, 0.15 at 1.5
+	sigma := sigmoid(x)
 	fmt.Println("\nσ(x) = 1 / (1 + e^-z)")
 	fmt.Printf("σ(1.5) = %.2f, σ'(1.5) = %.2f\n", GetVal(sigma), GetDeriv(sigma))
 
-	tanh := tanh(x) // tanh expected 0.91, 0.18 at 1.5
+	tanh := tanh(x)
 	fmt.Println("\ntanh(x) = (e^z - e^-z) / (e^z + e^-z)")
 	fmt.Printf("tanh(1.5) = %.2f, tanh'(1.5) = %.2f\n", GetVal(tanh), GetDeriv(tanh))
 
 }
 
 // f is a test function which we are going to calculate the derivative of
-func sampleFunction(x *Dual) *Dual {
+func simpleFunction(x *Dual) *Dual {
 	return x.Mul(x.Mul(x).Sin()).Add(ConstDual(1))
 }
 

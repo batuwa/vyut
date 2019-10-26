@@ -12,12 +12,12 @@ type Dual struct {
 
 // Package functions
 
-// NewDual function will allow you to create new dual numbers
+// NewDual function creates new dual numbers from the real and dual values
 func NewDual(r, d float64) *Dual {
 	return &Dual{real: r, dual: d}
 }
 
-// ConstDual funnction will allow you to create new dual numbers
+// ConstDual funnction creates creates a dual number from primitive numeric types like floats and ints
 func ConstDual(r float64) *Dual {
 	return &Dual{real: r, dual: 0}
 }

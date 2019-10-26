@@ -8,7 +8,7 @@
 
 ## Description
 
-_Yyut_ is a [Automatic Differentiation (AD)](https://en.wikipedia.org/wiki/Automatic_differentiation) library written in the Go programming language. It provides a simple API to calculate derivatives of mathematical functions, which is widely used in Deep Learning, Robotics and other fields of numeric computing.
+_Vyut_ is a [Automatic Differentiation (AD)](https://en.wikipedia.org/wiki/Automatic_differentiation) library written in the Go programming language. It provides a simple API to calculate derivatives of mathematical functions, which is widely used in Deep Learning, Robotics and other fields of numeric computing.
 
 Note: So far, a simple [Forward Differentiaion](https://en.wikipedia.org/wiki/Automatic_differentiation#Automatic_differentiation_using_dual_numbers) algorithm using dual numbers has been implemented.
 
