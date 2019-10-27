@@ -35,13 +35,13 @@ fmt.Println(d1.Sin())
 
 // Function differentiation
 func f(x *Dual) *Dual {
-    return ConstDual(1.0).Add(x.Exp())   // 1 + e^x
+    return FromReal(1.0).Add(x.Exp())   // 1 + e^x
 }
 
 x := NewDual(3, 1)
 y := f(x)
 
-fmt.Println("Derivative of f(x) at x=3 f'(3) is", GetDeriv(y))
+fmt.Println("Derivative of f(x) at x=3 f'(3) is", GetGrad(y))
 
 
 ```

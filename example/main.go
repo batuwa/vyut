@@ -12,7 +12,7 @@ func main() {
 	d1 := NewDual(1, 1)
 	d2 := NewDual(2, -4)
 
-	fmt.Printf("2.5      = %s\n", ConstDual(2.5))
+	fmt.Printf("2.5      = %s\n", FromReal(2.5))
 
 	fmt.Printf("d1 == d2 = %t\n", d1.IsEqual(d2))
 	fmt.Printf("d1 + d2  = %s\n", d1.Add(d2))
@@ -33,26 +33,26 @@ func main() {
 	y := simpleFunction(x)
 
 	fmt.Println("f(x) = x * sin(x*x) + 1")
-	fmt.Printf("f(1.5) = %.2f, f'(1.5) = %.2f\n", GetVal(y), GetDeriv(y))
+	fmt.Printf("f(1.5) = %.2f, f'(1.5) = %.2f\n", GetReal(y), GetGrad(y))
 
 	sigma := sigmoid(x)
 	fmt.Println("\nσ(x) = 1 / (1 + e^-z)")
-	fmt.Printf("σ(1.5) = %.2f, σ'(1.5) = %.2f\n", GetVal(sigma), GetDeriv(sigma))
+	fmt.Printf("σ(1.5) = %.2f, σ'(1.5) = %.2f\n", GetReal(sigma), GetGrad(sigma))
 
 	tanh := tanh(x)
 	fmt.Println("\ntanh(x) = (e^z - e^-z) / (e^z + e^-z)")
-	fmt.Printf("tanh(1.5) = %.2f, tanh'(1.5) = %.2f\n", GetVal(tanh), GetDeriv(tanh))
+	fmt.Printf("tanh(1.5) = %.2f, tanh'(1.5) = %.2f\n", GetReal(tanh), GetGrad(tanh))
 
 }
 
 // f is a test function which we are going to calculate the derivative of
 func simpleFunction(x *Dual) *Dual {
-	return x.Mul(x.Mul(x).Sin()).Add(ConstDual(1))
+	return x.Mul(x.Mul(x).Sin()).Add(FromReal(1))
 }
 
 // sigmoid function used in deep learning
 func sigmoid(z *Dual) *Dual {
-	return ConstDual(1).Div(ConstDual(1).Add(z.Neg().Exp()))
+	return FromReal(1).Div(FromReal(1).Add(z.Neg().Exp()))
 }
 
 // tanh function used in deep learning

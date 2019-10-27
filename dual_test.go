@@ -10,30 +10,30 @@ func TestDeriv(t *testing.T) {
 	x := NewDual(1.5, 1)
 
 	y := simpleFunction(x) // f expected -2.05 at 1.5
-	if math.Abs(GetDeriv(y)-(-2.0487)) > tolerance {
-		t.Errorf("Got %v, expected: %v.", GetDeriv(y), -2.05)
+	if math.Abs(GetGrad(y)-(-2.0487)) > tolerance {
+		t.Errorf("Got %v, expected: %v.", GetGrad(y), -2.05)
 	}
 
 	sigma := sigmoid(x) // sigma expected 0.15 at 1.5
-	if math.Abs(GetDeriv(sigma)-0.149) > tolerance {
-		t.Errorf("Got %v, expected: %v.", GetDeriv(sigma), 0.15)
+	if math.Abs(GetGrad(sigma)-0.149) > tolerance {
+		t.Errorf("Got %v, expected: %v.", GetGrad(sigma), 0.15)
 	}
 
 	tanh := tanh(x) // tanh expected 0.18 at 1.5
-	if math.Abs(GetDeriv(tanh)-0.180) > tolerance {
-		t.Errorf("Got %v, expected: %v.", GetDeriv(tanh), 0.18)
+	if math.Abs(GetGrad(tanh)-0.180) > tolerance {
+		t.Errorf("Got %v, expected: %v.", GetGrad(tanh), 0.18)
 	}
 
 }
 
 // f is a test function which we are going to calculate the derivative of
 func simpleFunction(x *Dual) *Dual {
-	return x.Mul(x.Mul(x).Sin()).Add(ConstDual(1))
+	return x.Mul(x.Mul(x).Sin()).Add(FromReal(1))
 }
 
 // sigmoid function used in deep learning
 func sigmoid(z *Dual) *Dual {
-	return ConstDual(1).Div(ConstDual(1).Add(z.Neg().Exp()))
+	return FromReal(1).Div(FromReal(1).Add(z.Neg().Exp()))
 }
 
 // tanh function used in deep learning
