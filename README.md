@@ -26,24 +26,35 @@ import . "github.com/batuwa/vyut"
 
 ```go
 
-// Dual numbers example
-d1 := NewDual(5, 1)
-d2 := NewDual(-2, 1)
+// Dual number instantiation
+d1 := NewDual(5, -2)
+d2 := NewDual(-2, 1.5)
 
 fmt.Println(d1.Add(d2))
 fmt.Println(d1.Sin())
 
-// Function differentiation
+// Function to differentiate f(x) = 1 + e^x
 func f(x *Dual) *Dual {
-    return FromReal(1.0).Add(x.Exp())   // 1 + e^x
+    return FromReal(1.0).Add(x.Exp())
 }
 
+// Input scalar variable in dual form for differentiation
 x := NewDual(3, 1)
+
+// Variable to store the funcation value at x, and store its gradient 
 y := f(x)
 
-fmt.Println("Derivative of f(x) at x=3 f'(3) is", GetGrad(y))
+// The Gradient is available via the function GetGrad(y)
+fmt.Printf("Derivative of f(x) at x=3 is f'(3) = %.2f", GetGrad(y))
+```
 
+Output is:
 
+```bash
+3.00 - 0.50ε
+-0.91 - 0.62ε
+
+Derivative of f(x) at x=3 is f'(3) = 20.09
 ```
 
 Run the main.go in `examples` folder for a more comprehensive example.
