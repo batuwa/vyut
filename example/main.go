@@ -38,21 +38,21 @@ func main() {
 	x := NewDual(1.5, 1)
 
 	// Testing out on some basic functions
-	y := simpleFunction(x)
+	y := f(x)
 	fmt.Println("f(x) = x * sin(x*x) + 1")
-	fmt.Printf("f(1.5) = %.2f, f'(1.5) = %.2f\n", GetReal(y), GetGrad(y))
+	fmt.Printf("f(1.5) = %.2f, df(1.5) = %.2f\n", GetVal(y), Gradient(y))
 
 	sigma := sigmoid(x)
 	fmt.Println("\nσ(x) = 1 / (1 + e^-z)")
-	fmt.Printf("σ(1.5) = %.2f, σ'(1.5) = %.2f\n", GetReal(sigma), GetGrad(sigma))
+	fmt.Printf("σ(1.5) = %.2f, dσ(1.5) = %.2f\n", GetVal(sigma), Gradient(sigma))
 
 	tanh := tanh(x)
 	fmt.Println("\ntanh(x) = (e^z - e^-z) / (e^z + e^-z)")
-	fmt.Printf("tanh(1.5) = %.2f, tanh'(1.5) = %.2f\n", GetReal(tanh), GetGrad(tanh))
+	fmt.Printf("tanh(1.5) = %.2f, dtanh(1.5) = %.2f\n", GetVal(tanh), Gradient(tanh))
 }
 
 // f is a test function which we are going to calculate the derivative of
-func simpleFunction(x *Dual) *Dual {
+func f(x *Dual) *Dual {
 	return x.Mul(x.Mul(x).Sin()).Add(FromReal(1))
 }
 

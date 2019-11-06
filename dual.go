@@ -22,13 +22,13 @@ func FromReal(r float64) *Dual {
 	return &Dual{real: r, grad: 0}
 }
 
-// GetReal returns the real part of the dual number
-func GetReal(d *Dual) float64 {
+// GetVal returns the real part of the dual number
+func GetVal(d *Dual) float64 {
 	return d.real
 }
 
-// GetGrad returns the derivative from the dual part of the dual number
-func GetGrad(d *Dual) float64 {
+// Gradient returns the derivative from the dual part of the dual number
+func Gradient(d *Dual) float64 {
 	return d.grad
 }
 

@@ -44,8 +44,11 @@ x := NewDual(3, 1)
 // Variable to store the funcation value at x, and store its gradient 
 y := f(x)
 
+// Obtain the derivative of y wrt x
+df = Gradient(y)
+
 // The Gradient is available via the function GetGrad(y)
-fmt.Printf("Derivative of f(x) at x=3 is f'(3) = %.2f", GetGrad(y))
+fmt.Printf("Derivative of f(x) at x=3 is f'(3) = %.2f", df)
 ```
 
 Output is:
@@ -54,7 +57,7 @@ Output is:
 3.00 - 0.50ε
 -0.91 - 0.62ε
 
-Derivative of f(x) at x=3 is f'(3) = 20.09
+Derivative of f(x) at x=3 is df(3) = 20.09
 ```
 
 Run the main.go in `examples` folder for a more comprehensive example.
