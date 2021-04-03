@@ -41,14 +41,11 @@ func f(x *Dual) *Dual {
 // Input scalar variable in dual form for differentiation
 x := NewDual(3, 1)
 
-// Variable to store the funcation value at x, and store its gradient 
-y := f(x)
-
-// Obtain the derivative of y wrt x
-df = Gradient(y)
+// Obtain the derivative of f(x) wrt x
+df_dx = Gradient(f(x))
 
 // The Gradient is available via the function GetGrad(y)
-fmt.Printf("Derivative of f(x) at x=3 is f'(3) = %.2f", df)
+fmt.Printf("Derivative of f(x) at x=3 is df(3) = %.2f", df_dx)
 ```
 
 Output is:
